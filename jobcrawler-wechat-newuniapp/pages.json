@@ -1,0 +1,107 @@
+{
+	"pages": [{
+		"path": "pages/index/index",
+		"style": {
+			"navigationBarTitleText": "云海定制"
+		}
+	},
+	{
+		"path": "pages/detail/productdetail",
+		"style": {
+			"navigationBarTitleText": "产品详情"
+		}
+	},
+	{
+		"path": "pages/user/user",
+		"style": {
+			"navigationBarTitleText": "我的"
+		}
+	},
+	{
+		"path": "pages/size/chooicesize",
+		"style": {
+			"navigationBarTitleText": "云海定制"
+		}
+	},
+	{
+		"path": "pages/cropper/imgcropper",
+		"style": {
+			"navigationBarTitleText": "上传图片"
+		}
+	},
+	{
+		"path": "pages/cropper/index",
+		"style": {
+			"navigationBarTitleText": "上传图片"
+		}
+	},
+	{
+		//包装盒编辑
+		"path": "pages/boxdiy/boxdiy",
+		"style": {
+			"navigationBarTitleText": "云海定制"
+		}
+	},{
+		"path":"pages/ordercreate/ordercreate",
+		"style":{
+			"navigationBarTitleText":"订单确认"
+		}
+	}
+	,{
+		"path":"pages/map/map",
+		"style":{
+			"navigationBarTitleText":"选择图标"
+		}
+	},
+	{
+		"path":"pages/letter/letter",
+		"style":{
+			"navigationBarTitleText":"网信模板"
+		}
+	},
+	{
+		"path":"pages/img/img",
+		"style":{
+			"navigationBarTitleText":"选择图库"
+		}
+	},
+	{
+		"path":"pages/letter/editletter",
+		"style":{
+			"navigationBarTitleText":"网信上传"
+		}
+	}
+	],
+	"globalStyle": {
+		"navigationBarTextStyle": "white",
+		"navigationBarTitleText": "uni-app",
+		"navigationBarBackgroundColor": "#007AFF",
+		"backgroundColor": "#FFFFFF"
+	},
+	"tabBar":{
+		// "color": "#7A7E83",
+		// "selectedColor": "#007AFF",
+		"borderStyle": "black",
+		"backgroundColor": "#F8F8F8",
+		"list": [
+			{
+				"pagePath": "pages/index/index",
+				"iconPath": "/static/icon/首页1.png",
+				"selectedIconPath": "/static/icon/首页.png",
+				"text": "首页"
+			},
+			{
+				"pagePath": "pages/detail/productdetail",
+				"iconPath": "/static/icon/产品详情1.png",
+				"selectedIconPath": "/static/icon/产品详情.png",
+				"text": "产品详情"
+			},
+			{
+				"pagePath": "pages/user/user",
+				"iconPath": "/static/icon/我的1.png",
+				"selectedIconPath": "/static/icon/我的.png",
+				"text": "我的"
+			}
+		]
+	}
+}
