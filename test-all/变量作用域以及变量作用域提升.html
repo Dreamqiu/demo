@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+</body>
+<script>
+    console.log(a);  ///underfined
+    var a=1; 
+
+    // console.log(b); ///报错
+    // b=1;
+
+    c=2;
+    console.log(c);  //2
+
+    foo();
+    function foo(){
+        if (false){
+            var i =11
+        }
+        console.log(i);  //underfined  变量在函数执行前就被声明了但是false状态不赋值
+    }
+
+    
+    function foo1(){
+        if (false){
+            var i =12
+        }
+        console.log(i);   //underfined 先预解析了i；false状态下没进if判断没赋值所以underfined
+    }
+    foo1()
+</script>
+</html>

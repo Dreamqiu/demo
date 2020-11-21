@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+.content{
+    width: 700px;
+    height: 100px;
+    display: flex;
+}
+.left{
+    height: 100px;
+    background-color: red;
+    order: -1;  
+    flex: 0 1 200px;
+    
+}
+.right{
+    height: 100px;
+    background-color: yellow;
+    flex: 0 1 200px;
+    
+}
+.middle{
+    height: 100px;
+    flex-grow: 1;
+    background-color:green;
+    
+}
+</style>
+<body>
+    <div class="content">
+        <div class="left">左</div>
+        <div class="middle">中</div>
+        <div class="right">右</div>
+    </div>
+</body>
+</html>

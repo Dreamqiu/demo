@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+</body>
+<script>
+    var arr = [
+    {"code": "a", "poll": '一bai'},
+    {"code": "b", "poll": '二'},
+    {"code": "c", "poll": '三'},
+    {"code": "a", "poll": '四'},
+    {"code": "c", "poll": '五'},
+    {"code": "a", "poll": '六du'}
+    ];
+    var obj = {};
+    arr.map(function(item){
+    if(obj[item.code]){
+    obj[item.code] = obj[item.code] + ','+ item.poll
+    }
+    else
+    obj[item.code] = item.poll
+    });
+    var res = Object.keys(obj).map(item=>{
+    return {
+    code : item,
+    data : obj[item].split(',')
+    }});
+
+    // var res = Object.keys(map).map(key => [{date: key, value: map[key]}][0])
+    console.log(res);
+</script>
+</html>
