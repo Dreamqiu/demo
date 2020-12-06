@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <link rel="stylesheet" type="text/css" href="index.css"/>
+    <link rel="stylesheet" type="text/css" href="index01.css" media="screen and (max-width:1024px) and (min-width:720px)"/>
+    <link rel="stylesheet" type="text/css" href="index02.css" media="screen and (max-width:720px)"/>
+
+    <!-- 通过link引入不同的样式来控制响应式布局，在屏幕分辨率小于720时使用index02样式，
+        在屏幕分辨率大于720小于1024时使用index01样式，在屏幕分辨率大于1024时使用index样式 -->
+</head>
+<body>
+
+    <div class="header">头部</div>
+    <div class="main clearfix">
+        <div class="left">左边</div>
+        <div class="center">中间</div>
+        <div class="right">右边</div>
+    </div>
+    <div class="footer">底部</div>
+    
+</body>
+</html>
