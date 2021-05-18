@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        var arr=[{name:'ee',id:3},{name:'tt',id:4},{name:'hhh',id:5},{name:'tt',id:6},{name:'hhh',id:1},{name:'ee',id:2}];
+ 
+        // 传入一个数组
+        // 按照特定方式格式化
+        function sortArr(arr, str) {
+            var _arr = [],
+                _t = [],
+                // 临时的变量
+                _tmp;
+            // 按照特定的参数将数组排序将具有相同值得排在一起
+            arr = arr.sort(function(a, b) {
+                var s = a[str],
+                    t = b[str];
+        
+                return s < t ? -1 : 1;
+            });
+            if ( arr.length ){
+                _tmp = arr[0][str];
+            }
+            console.log( arr );
+            // 将相同类别的对象添加到统一个数组
+            for (var i in arr) {
+                console.log( _tmp);
+                if ( arr[i][str] === _tmp ){
+                    _t.push( arr[i] );
+                } else {
+                    _tmp = arr[i][str];
+                    _arr.push( _t );
+                    _t = [arr[i]];
+                }
+            }
+            // 将最后的内容推出新数组
+            _arr.push( _t );
+            return _arr;
+        }
+        
+        let list = sortArr( arr, 'name');
+        console.log(list)
+
+    </script>
+</body>
+</html>

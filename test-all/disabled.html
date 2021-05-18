@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <input class="_1u_H4i" disabled></input>
+</body>
+<script>
+    // Firefox和Chrome早期版本中带有前缀
+    var MutationObserver = window.MutationObserver || window.WebKitMutationObserver || window.MozMutationObserver
+    // 选择目标节点
+    var target = document.querySelector('input._1u_H4i'); 
+    // 创建观察者对象
+    var observer = new MutationObserver(function(mutations) {  
+    mutations.forEach(function(mutation) { 
+        // console.log(mutation.type);
+        // console.log(111111)
+        if(target.getAttribute('disabled') === 'disabled') return
+        console.log(mutation.type);
+        target.setAttribute('disabled','disabled')
+
+    }); 
+    }); 
+    // 配置观察选项:
+    var config = { attributes: true, childList: true, characterData: true } 
+    // 传入目标节点和观察选项
+    observer.observe(target, config); 
+    // 随后,你还可以停止观察
+    // observer.disconnect();
+</script>
+</html>
+
+<!-- <html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <div id="content"></div>
+</body>
+<script>
+  function drawCanvas() {
+    let content = document.getElementById("content");
+    let divContainer = document.body.appendChild(document.createElement('div'));
+    content.appendChild(divContainer);
+    let waterMarkercanvas = document.createElement('canvas');
+    let context = waterMarkercanvas.getContext('2d');
+
+    divContainer.appendChild(waterMarkercanvas);
+    divContainer.id = 'divContainer'
+    let backgroundUrl = null;
+
+    divContainer.style.height = window.innerHeight + 'px';
+    divContainer.style.width = window.innerWidth + 'px';
+
+
+    waterMarkercanvas.width = "400";
+    waterMarkercanvas.height = "400";
+
+    context.font = "20px";
+    context.textAlign = "center";
+    context.fillStyle = "#0000ff";
+    context.fillText("我是水印", 100, 100);
+
+    backgroundUrl = waterMarkercanvas.toDataURL('image/png');
+    divContainer.style.backgroundImage = `url(${backgroundUrl})`;
+  }
+  drawCanvas();
+  let callback = (mutations) => {
+    mutations.forEach(mutation => {
+        console.log(mutation,"mutation");
+        if(mutation.removedNodes.length > 0 && mutation.removedNodes[0].id == "divContainer" && mutation.addedNodes.length <= 0) {
+          setTimeout(function() {
+            console.log("新增")
+            drawCanvas();
+          }, 3000)
+        }
+    });
+  };
+  let observer = new MutationObserver(callback);
+  observer.observe(document.getElementById("content"), {
+    childList: true,
+    // subtree: true
+  });
+  console.log(document.getElementsByTagName("div"))
+  setTimeout(function() {
+    console.log("删除")
+    document.getElementById("content").removeChild(document.getElementById("divContainer"));
+  }, 3000)
+</script>
+</html> -->
