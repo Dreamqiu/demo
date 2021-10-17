@@ -1,0 +1,112 @@
+<template>
+  <div>
+    <div id="mask">
+        <img src="../test-html/SoundRecording/recorder/image/luyin.gif" alt="">
+        <p>录音中······</p>
+    </div>
+    <button @click="touchstart">开始录音</button>
+    <button @click="touchend">结束录音</button>
+    <div id="audio-container"></div>
+  </div>
+</template>
+
+<script>
+import Recorder from '../test-html/SoundRecording/recorder/js/recorder.js'
+export default {
+  name: 'HelloWorld',
+  props: {
+    msg: String
+  },
+  mounted(){
+    
+  },
+  methods:{
+    recorder(){
+      var recorder = new Recorder({
+          sampleRate: 44100, //采样频率，默认为44100Hz(标准MP3采样率)
+          bitRate: 128, //比特率，默认为128kbps(标准MP3质量)
+          success: function(){ //成功回调函数
+              // start.disabled = false;
+          },
+          error: function(msg){ //失败回调函数
+              alert(msg);
+          },
+          fix: function(msg){ //不支持H5录音回调函数
+              alert(msg);
+          }
+      });
+
+      return recorder
+    },
+    touchstart(){
+      var recorder = this.recorder()
+      var mask = document.getElementById('mask');
+      setTimeout(function(){
+          console.log(1)
+          var audio = document.querySelectorAll('audio');
+              for(var i = 0; i < audio.length; i++){
+                  if(!audio[i].paused){
+                      audio[i].pause();
+                  }
+              }
+          mask.style.display="block"
+          recorder.start();
+      },500);
+    },
+    touchend(){
+      var recorder = this.recorder()
+      var mask = document.getElementById('mask')
+      var container = document.querySelector('#audio-container')
+      console.log('touchend')
+      recorder.stop();
+      mask.style.display="none"
+      recorder.getBlob(function(blob){
+          var audio = document.createElement('audio');
+          audio.src = URL.createObjectURL(blob);
+          audio.controls = true;
+          container.appendChild(audio);
+      });
+      return false
+    }
+  }
+}
+</script>
+
+<!-- Add "scoped" attribute to limit CSS to this component only -->
+<style scoped>
+</style>
+
+<style>
+audio { display: block; margin-bottom: 10px; }
+#audio-container { padding: 20px 0; }
+.ui-btn { display: inline-block; padding: 5px 20px; font-size: 14px; line-height: 1.428571429; box-sizing:content-box; text-align: center; border: 1px solid #e8e8e8; border-radius: 3px; color: #555; background-color: #fff; border-color: #e8e8e8; white-space: nowrap; cursor: pointer; -webkit-user-select: none; -moz-user-select: none; -ms-user-select: none; user-select: none; }
+.ui-btn:hover, .ui-btn.hover { color: #333; text-decoration: none; background-color: #f8f8f8; border:1px solid #ddd; }
+.ui-btn:focus, .ui-btn:active { color: #333; outline: 0; }
+.ui-btn.disabled, .ui-btn.disabled:hover, .ui-btn.disabled:active, .ui-btn[disabled], .ui-btn[disabled]:hover, .ui-state-disabled .ui-btn { cursor: not-allowed; background-color: #eee; border-color: #eee; color: #aaa; }
+.ui-btn-primary { color: #fff;  background-color: #39b54a;  border-color: #39b54a; position: fixed;bottom: 1.5rem;width: 80%;margin-left: 10%;padding: .5rem 0;}
+.ui-btn-primary:hover, .ui-btn-primary.hover { color: #fff; background-color: #16a329; border-color: #16a329; }
+.ui-btn-primary:focus, .ui-btn-primary:active { color: #fff; }
+.ui-btn-primary.disabled:focus{ color: #aaa; }
+img{
+    display: block;
+    width:40%;
+    margin: auto;
+}
+body{
+    margin:0;
+    padding: 0;
+}
+#mask{
+    width: 43%;
+    background: rgba(0,0,0,0.05);
+    padding: 3rem 0 1rem 0;
+    display: none;
+    margin: 2rem auto;
+    margin-top: 51%;
+}
+#mask p{
+    text-align: center;
+    font-size: .8rem;
+    color: rgba(0,0,0,0.5);
+}
+</style>
